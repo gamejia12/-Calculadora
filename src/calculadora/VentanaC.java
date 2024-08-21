@@ -15,9 +15,8 @@ public class VentanaC extends javax.swing.JFrame {
      */
     private double numero = 0.0;
     private double resultado = 0.0;
-    private boolean operacionActual = false;
     private String ultimaOperacion = "";
-
+    
     public VentanaC() {
         initComponents();
     }
@@ -56,9 +55,19 @@ public class VentanaC extends javax.swing.JFrame {
 
         txtPantallaResultado.setFont(new java.awt.Font("Segoe UI", 1, 36)); // NOI18N
         txtPantallaResultado.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
+        txtPantallaResultado.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtPantallaResultadoActionPerformed(evt);
+            }
+        });
 
         btnLimpiar.setFont(new java.awt.Font("Segoe UI", 1, 30)); // NOI18N
         btnLimpiar.setText("AC");
+        btnLimpiar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnLimpiarActionPerformed(evt);
+            }
+        });
 
         btnCambioSigno.setFont(new java.awt.Font("Segoe UI", 1, 26)); // NOI18N
         btnCambioSigno.setText("+/-");
@@ -70,9 +79,19 @@ public class VentanaC extends javax.swing.JFrame {
 
         btnPorcentaje.setFont(new java.awt.Font("Segoe UI", 1, 30)); // NOI18N
         btnPorcentaje.setText("%");
+        btnPorcentaje.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnPorcentajeActionPerformed(evt);
+            }
+        });
 
         btnDividir.setFont(new java.awt.Font("Segoe UI", 1, 30)); // NOI18N
         btnDividir.setText("÷");
+        btnDividir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnDividirActionPerformed(evt);
+            }
+        });
 
         btnNum7.setFont(new java.awt.Font("Segoe UI", 1, 30)); // NOI18N
         btnNum7.setText("7");
@@ -100,6 +119,11 @@ public class VentanaC extends javax.swing.JFrame {
 
         btnMultiplicar.setFont(new java.awt.Font("Segoe UI", 1, 30)); // NOI18N
         btnMultiplicar.setText("x");
+        btnMultiplicar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnMultiplicarActionPerformed(evt);
+            }
+        });
 
         btnRestar.setFont(new java.awt.Font("Segoe UI", 1, 30)); // NOI18N
         btnRestar.setText("-");
@@ -295,11 +319,13 @@ public class VentanaC extends javax.swing.JFrame {
                     resultado *= numero;
                     break;
                 case "/":
-                    if (numero != 0) {
-                        resultado /= numero;
-                    } else {
+                    if (numero == 0) {
                         txtPantallaResultado.setText("Error");
+                        resultado = 0;
+                        ultimaOperacion = "";
                         return;
+                    } else {
+                        resultado /= numero;
                     }
                     break;
                 default:
@@ -317,52 +343,42 @@ public class VentanaC extends javax.swing.JFrame {
 
     private void btnNum1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNum1ActionPerformed
         txtPantallaResultado.setText(txtPantallaResultado.getText() + "1");
-        operacionActual = false;
     }//GEN-LAST:event_btnNum1ActionPerformed
 
     private void btnNum2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNum2ActionPerformed
         txtPantallaResultado.setText(txtPantallaResultado.getText() + "2");
-        operacionActual = false;
     }//GEN-LAST:event_btnNum2ActionPerformed
 
     private void btnNum3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNum3ActionPerformed
         txtPantallaResultado.setText(txtPantallaResultado.getText() + "3");
-        operacionActual = false;
     }//GEN-LAST:event_btnNum3ActionPerformed
 
     private void btnNum4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNum4ActionPerformed
         txtPantallaResultado.setText(txtPantallaResultado.getText() + "4");
-        operacionActual = false;
     }//GEN-LAST:event_btnNum4ActionPerformed
 
     private void btnNum5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNum5ActionPerformed
         txtPantallaResultado.setText(txtPantallaResultado.getText() + "5");
-        operacionActual = false;
     }//GEN-LAST:event_btnNum5ActionPerformed
 
     private void btnNum6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNum6ActionPerformed
         txtPantallaResultado.setText(txtPantallaResultado.getText() + "6");
-        operacionActual = false;
     }//GEN-LAST:event_btnNum6ActionPerformed
 
     private void btnNum7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNum7ActionPerformed
         txtPantallaResultado.setText(txtPantallaResultado.getText() + "7");
-        operacionActual = false;
     }//GEN-LAST:event_btnNum7ActionPerformed
 
     private void btnNum8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNum8ActionPerformed
         txtPantallaResultado.setText(txtPantallaResultado.getText() + "8");
-        operacionActual = false;
     }//GEN-LAST:event_btnNum8ActionPerformed
 
     private void btnNum9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNum9ActionPerformed
         txtPantallaResultado.setText(txtPantallaResultado.getText() + "9");
-        operacionActual = false;
     }//GEN-LAST:event_btnNum9ActionPerformed
 
     private void btnNum0ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNum0ActionPerformed
         txtPantallaResultado.setText(txtPantallaResultado.getText() + "0");
-        operacionActual = false;
     }//GEN-LAST:event_btnNum0ActionPerformed
 
     private void btnDecimalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDecimalActionPerformed
@@ -376,21 +392,58 @@ public class VentanaC extends javax.swing.JFrame {
     private void btnSumarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSumarActionPerformed
         realizarOperacionPendiente();
         ultimaOperacion = "+";
-        operacionActual = true;
     }//GEN-LAST:event_btnSumarActionPerformed
 
     private void btnResultadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnResultadoActionPerformed
-        realizarOperacionPendiente();
-        txtPantallaResultado.setText(String.valueOf(resultado));
-        resultado = 0.0; // Resetear el resultado para nuevas operaciones
-        ultimaOperacion = "";
+        if (ultimaOperacion.equals("/") && txtPantallaResultado.getText().equals("0")) {
+            txtPantallaResultado.setText("Error");
+            resultado = 0.0;
+            ultimaOperacion = "";
+        } else {
+            realizarOperacionPendiente();
+            txtPantallaResultado.setText(String.valueOf(resultado));
+            resultado = 0.0;
+            ultimaOperacion = "";
+        }
+
     }//GEN-LAST:event_btnResultadoActionPerformed
 
     private void btnRestarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRestarActionPerformed
         realizarOperacionPendiente();
         ultimaOperacion = "-";
-        operacionActual = true;
     }//GEN-LAST:event_btnRestarActionPerformed
+
+    private void btnDividirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDividirActionPerformed
+        realizarOperacionPendiente();
+        ultimaOperacion = "/";
+    }//GEN-LAST:event_btnDividirActionPerformed
+
+    private void btnMultiplicarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMultiplicarActionPerformed
+        realizarOperacionPendiente();
+        ultimaOperacion = "*";
+    }//GEN-LAST:event_btnMultiplicarActionPerformed
+
+    private void btnLimpiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLimpiarActionPerformed
+       txtPantallaResultado.setText("");
+       resultado = 0.0;
+       ultimaOperacion = "";
+    }//GEN-LAST:event_btnLimpiarActionPerformed
+
+    private void txtPantallaResultadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtPantallaResultadoActionPerformed
+        if (!txtPantallaResultado.getText().isEmpty() && txtPantallaResultado.getText().equals("Error") ) {
+            numero = Double.parseDouble(txtPantallaResultado.getText());
+            numero *= -1;
+            txtPantallaResultado.setText(String.valueOf(numero));
+        }
+    }//GEN-LAST:event_txtPantallaResultadoActionPerformed
+
+    private void btnPorcentajeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPorcentajeActionPerformed
+        if (!txtPantallaResultado.getText().isEmpty()) {
+            numero = Double.parseDouble(txtPantallaResultado.getText());
+            numero = (resultado * numero) / 100.0;
+            txtPantallaResultado.setText(String.valueOf(numero));
+        }
+    }//GEN-LAST:event_btnPorcentajeActionPerformed
 
     /**
      * @param args the command line arguments
